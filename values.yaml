@@ -1,4 +1,3 @@
-
 image:
   repository: ollama/ollama
   pullPolicy: IfNotPresent
@@ -18,11 +17,13 @@ persistentVolume:
 
 resources:
   limits:
-    cpu: 2
-    memory: 4Gi
+    cpu: 4
+    memory: 12Gi
+    ephemeral-storage: "60Gi"
   requests:
-    cpu: 500m
-    memory: 512Mi
+    cpu: 2
+    memory: 8Gi
+    ephemeral-storage: "30Gi"
 
 service:
   type: ClusterIP
@@ -80,6 +81,16 @@ ui:
     size: ""
     claimName: ""
 
+  resources:
+    limits:
+      cpu: "1000m"
+      memory: "2Gi"
+      ephemeral-storage: "4Gi"
+    requests:
+      cpu: "500m"
+      memory: "1Gi"
+      ephemeral-storage: "2Gi"
+
   ingress:
     enabled: false
     className: ""
@@ -94,4 +105,3 @@ ui:
   nodeSelector: {}
   tolerations: []
   affinity: {}
-
